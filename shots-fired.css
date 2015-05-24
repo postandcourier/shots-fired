@@ -555,6 +555,13 @@ form {
   float: right; }
 .u-pull-left {
   float: left; }
+  
+.map-container {
+  position: relative;
+  min-height: 450px;
+}
+
+#map { position:absolute; top:0; bottom:0; width:100%; }
 
 
 /* Misc

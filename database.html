@@ -1,0 +1,45 @@
+<head>
+  <title>shots-fired</title>
+  <link href='http://fonts.googleapis.com/css?family=Playfair+Display:400,700,900,400italic,700italic,900italic' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+</head>
+
+<body></body>
+
+<template name="dataView">
+  
+  <div class="container">
+    
+    <div class="row">
+      <div class="two-thirds column">
+        <h1>Shots fired.</h1>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="two-thirds column">
+        <p>Some sort of intro paragraph or something. I'll write this later. Here's some random text about css: Type is all set with the rems, so font-sizes and spacial relationships can be responsively sized based on a single font-size property. Out of the box, Skeleton never changes the font-size, but it's there in case you need it for your project. All measurements are still base 10 though so, and with 5.0rem font-size just means 50px.</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="four columns">
+        {{> chart}}
+      </div>
+      <div class="eight columns map-container">
+        {{> map}}
+      </div>
+    </div>
+    
+  </div>
+
+  
+</template>
+
+<template name="chart">
+    <div id="svgdiv"></div>
+</template>
+
+<template name="map">
+  <div id='map'></div>
+</template>

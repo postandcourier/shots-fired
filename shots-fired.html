@@ -18,26 +18,38 @@
   
 </template>
 
-<template name="dataView">
+<template name="adminView">
   
-  <div class="container">
-    
-    <div class="row">
-      <div class="two-thirds column">
-        <h1>Shots fired.</h1>
-      </div>
+  <div class="row">
+    <div class="two-thirds column">
+      <h1>Database Admin</h1>
+      {{> loginButtons}}
     </div>
-    
-    <div class="row">
-      <div class="two-thirds column">
-        <p>Some sort of intro paragraph or something. I'll write this later. Here's some random text about css: Type is all set with the rems, so font-sizes and spacial relationships can be responsively sized based on a single font-size property. Out of the box, Skeleton never changes the font-size, but it's there in case you need it for your project. All measurements are still base 10 though so, and with 5.0rem font-size just means 50px.</p>
-      </div>
-    </div>
-    
   </div>
-
   
+  {{#if currentUser "admin"}}
+    <div class="row">
+      <div class="twelve columns">
+        {{> volcanoTable settings=admin_settings}}
+      </div>
+    </div>
+  {{else}}
+    <div class="row">
+      <div class="two-thirds column">
+        <p>You need to be logged in to view this content.</p>
+      </div>
+    </div>
+  {{/if}}
+ 
 </template>
+
+
+<template name="adminTable">
+
+    {{> volcanoTable settings=admin_settings}}
+
+</template>
+
 
 <template name="shootingListItem">
   <tr>

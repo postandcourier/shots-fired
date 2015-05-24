@@ -8,3 +8,12 @@ meteor-platform
 iron:router
 fortawesome:fontawesome
 d3js:d3
+aldeed:collection2
+accounts-ui
+accounts-password
+accounts-base
+aslagle:reactive-table
+babrahams:editable-text
+wilbur:volcano-table
+simoes:d3plus
+pauloborges:mapbox
