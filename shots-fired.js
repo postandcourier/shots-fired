@@ -1,4 +1,16 @@
+Shootings = new Mongo.Collection("sled-shootings");
+
 if (Meteor.isClient) {
+  
+  Meteor.subscribe("shootings");
+	
+	Template.rawDataView.helpers({
+  	shootings: function() {
+    	return Shootings.find({});
+  	}
+	});
+	
+	
   // counter starts at 0
   Session.setDefault('counter', 0);
 
@@ -17,7 +29,13 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+  
   Meteor.startup(function () {
     // code to run on server at startup
   });
+  
+  Meteor.publish("shootings", function() {
+    return Shootings.find();
+  });
+  
 }
