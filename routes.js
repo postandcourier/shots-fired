@@ -12,6 +12,8 @@ if (Meteor.isClient) {
       
     if ( this.ready() ) {
       this.render('dataView');
+    } else {
+      this.render('loader');
     }
     
   });
