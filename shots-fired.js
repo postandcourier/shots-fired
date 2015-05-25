@@ -46,6 +46,17 @@ if (Meteor.isClient) {
         	{ key: 'officerKilled', label: 'officerKilled', input: 'text'},
         	{ key: 'latitude', label: 'latitude', input: 'text'},
         	{ key: 'longitude', label: 'longitude', input: 'text'},
+        	{ key: 'suspectInjured', label: 'suspectInjured', input: 'text'},
+        	{ key: 'suspectKilled', label: 'suspectKilled', input: 'text'},
+        	{ key: 'suspectOffense', label: 'suspectOffense', input: 'text'},
+        	{ key: 'suspectName', label: 'suspectName', input: 'text'},
+        	{ key: 'officerAge', label: 'officerAge', input: 'text'},
+        	{ key: 'suspectAge', label: 'suspectAge', input: 'text'},
+        	{ key: 'officerRace', label: 'officerRace', input: 'text'},
+        	{ key: 'suspectRace', label: 'suspectRace', input: 'text'},
+        	{ key: 'wasShootingAfterFootchase', label: 'wasShootingAfterFootchase', input: 'text'},
+        	{ key: 'wasShootingAfterCarChase', label: 'wasShootingAfterCarChase', input: 'text'},
+        	{ key: 'video', label: 'video', input: 'text'}
       	]
     	}
   	}
@@ -138,4 +149,18 @@ if (Meteor.isServer) {
   });
   
   VolcanoTable(Shootings, 'adminTable', {});
+  
+  Shootings.allow({
+		insert : function() {
+			return true;
+		},
+
+		update : function() {
+			return true;
+		},
+
+		remove : function() {
+			return true;
+		}
+	});
 }
