@@ -1,4 +1,6 @@
 Shootings = new Mongo.Collection("sled-shootings-clean");
+Pages = new Mongo.Collection("pages");
+
 
 if (Meteor.isClient) {
   
@@ -46,6 +48,7 @@ if (Meteor.isClient) {
         	{ key: 'officerKilled', label: 'officerKilled', input: 'text'},
         	{ key: 'latitude', label: 'latitude', input: 'text'},
         	{ key: 'longitude', label: 'longitude', input: 'text'},
+        	{ key: 'suspectWeapon', label: 'suspectWeapon', input: 'text'},
         	{ key: 'suspectInjured', label: 'suspectInjured', input: 'text'},
         	{ key: 'suspectKilled', label: 'suspectKilled', input: 'text'},
         	{ key: 'suspectOffense', label: 'suspectOffense', input: 'text'},
@@ -93,9 +96,7 @@ if (Meteor.isClient) {
     var heatData = _.map(fetchedResults, function(d) {
       return [d.latitude, d.longitude];
     })
-    
-    console.log(heatData);
-    
+        
     this.autorun(function () {
       if (Mapbox.loaded()) {
         L.mapbox.accessToken = 'pk.eyJ1IjoicG9zdGFuZGNvdXJpZXIiLCJhIjoiLTJtdV9XQSJ9.jbQWsbAO9LktxtEBDHcl3Q';
@@ -144,23 +145,6 @@ if (Meteor.isServer) {
     // code to run on server at startup
   });
   
-  Meteor.publish("shootings", function() {
-    return Shootings.find();
-  });
-  
   VolcanoTable(Shootings, 'adminTable', {});
   
-  Shootings.allow({
-		insert : function() {
-			return true;
-		},
-
-		update : function() {
-			return true;
-		},
-
-		remove : function() {
-			return true;
-		}
-	});
 }

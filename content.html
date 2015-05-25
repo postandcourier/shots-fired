@@ -1,0 +1,35 @@
+<template name="pageView">
+
+  <div class="page-head">
+		<div class="image-container">
+  		<div class="still-frame"></div>
+		</div>
+  </div>		
+
+  <div class="main-container">  
+    <div class="container">
+      
+      <div class="row">
+        <div class="two-thirds column" style="margin-top: 5%">
+          <h1>{{headline}}</h1>
+          <h5>{{subhead}}</h5>
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="two-thirds column">
+          {{#each paragraphs}}
+            {{> paragraph}}
+          {{/each}}
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  
+</template>
+
+<template name="paragraph">
+    <p>{{text}}</p>
+</template>

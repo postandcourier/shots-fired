@@ -4,7 +4,16 @@
   <link href='//fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
 </head>
 
-<body></body>
+<body>
+  <div class="nav-container">
+  	<div class="container">
+  	  <div class="logo">
+  		  <a href="http://www.postandcourier.com" style="line-height:30px; height:30px; display:inline-block; float: left; margin-bottom: 10px; margin-right: 1rem;"><img class="u-max-full-width" src="http://www.postandcourier.com/scott-timegap/images/pclogo.png" style="margin-top:4px;"></a>
+        <div style="height:30px; padding-top: 5px;"><a href="/shots-fired/page/1" style="line-height:30px;"><span>One</span></a> <a href="/shots-fired/page/2" style="line-height:30px;"><span>Two</span></a> <a href="/shots-fired/page/3" style="line-height:30px;"><span>Three</span></a> <a href="/shots-fired/page/4" style="line-height:30px;"><span>Four</span></a> <a href="/shots-fired/data" style="line-height:30px;"><span>Data</span></a></div>
+  	  </div>
+    </div>
+  </div>
+</body>
 
 <template name="rawDataView">
   
@@ -51,10 +60,13 @@
 </template>
 
 <template name="loader">
-  <div class="ui segment">
-    <p></p>
-    <div class="ui active dimmer">
-      <div class="ui loader"></div>
+  <div class="main-container ui segment">
+    <div class="container">
+      <div class="row">
+        <div class="two-thirds column">
+          {{> spinner}}
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -67,9 +79,4 @@
     <td>{{Status}}</td>
     <td>{{caseNumber}}</td>
   </tr>
-</template>
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
 </template>

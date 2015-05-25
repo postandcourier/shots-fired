@@ -159,6 +159,7 @@ body {
   position: absolute;
   left: 0;
   top: 0;
+  background-color: #3498db;
 }
 
 .nav-container{

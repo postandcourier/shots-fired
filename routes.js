@@ -1,9 +1,5 @@
 if (Meteor.isClient) {
 
-  Router.route('/raw', function () {
-    this.render('rawDataView');
-  });
-  
   Router.route('/shots-fired/data', function () {
     
     //subscribe to the raw data
@@ -18,22 +14,35 @@ if (Meteor.isClient) {
     
   });
   
-  Router.route('/shots-fired/admin', function () {
-    
-    //subscribe to the raw data
-    this.wait(Meteor.subscribe("shootings"));
-    
-    if ( this.ready() ) {
-      this.render('adminView');
-    }
-  });
+  Router.route('/shots-fired/page');    
 
+  Router.route('/shots-fired/page/:_id', function () {
+
+    //subscribe to the raw data
+    this.subscribe("pages", Number(this.params._id) ).wait();
+      
+    if ( this.ready() ) {
+      var page = Pages.findOne({'pageNumber': Number(this.params._id)});
+      this.render('pageView', {data: page});
+    } else {
+      this.render('loader');
+    }
+    
+  });
 
 }
 
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+  });
+  
+  Meteor.publish('shootings', function() {
+    return Shootings.find();
+  });
+  
+  Meteor.publish('pages', function(pageID) {
+    return Pages.find({'pageNumber': pageID});
   });
   
   Router.route('/shots-fired/admin', function() {
