@@ -24,7 +24,11 @@
         <div class="two-thirds column">
           <h1>Login</h1>
           {{> loginButtons}}
-          <p>Login to edit site content.</p>
+          {{#if currentUser}}
+            <p>You are now logged in!</p>
+          {{else}}
+            <p>Login to edit site content.</p>
+          {{/if}}
         </div>
       </div>
       

@@ -509,8 +509,7 @@ label > .label-body {
   margin-left: .5rem;
   font-weight: normal; }
   
-h1, h2, h3, h4, h5, h6 {
-  
+h1 {
   input[type="text"], textarea, .text-area-edit{
     border-radius: 0;
     padding: 0 0 0 10px;
@@ -519,6 +518,24 @@ h1, h2, h3, h4, h5, h6 {
     box-sizing: border-box;
     resize: vertical;
     min-height: 80px;
+  }
+  
+  textarea:focus{
+    border:none;
+    background: rgba(52, 152, 219,0.12);
+  }
+}
+  
+h2, h3, h4, h5, h6 {
+  
+  input[type="text"], textarea, .text-area-edit{
+    border-radius: 0;
+    padding: 0 0 0 10px;
+    margin-left:-10px;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 150px;
   }
   
   textarea:focus{
@@ -535,7 +552,7 @@ p {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
     resize: vertical;
-    min-height: 100px;
+    min-height: 140px;
   }
   textarea:focus{
     border:none;
