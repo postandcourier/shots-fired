@@ -545,7 +545,7 @@ h2, h3, h4, h5, h6 {
 }
 
 p {
-  input[type="text"], textarea, .text-area-edit{
+  textarea, .text-area-edit{
     @extend body;
     font-size: 1em;
     border-radius: 0;
@@ -557,6 +557,18 @@ p {
   textarea:focus{
     border:none;
     background: rgba(52, 152, 219,0.12);
+  }
+}
+
+em {
+  label {
+    display: inline-block;
+    float:left;
+  }
+  input[type="text"] {
+    display: inline;
+    float:left;
+    width: 90%;
   }
 }
 

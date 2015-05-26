@@ -2,45 +2,114 @@
 
   <div class="page-head">
 		<div class="image-container">
-  		<div class="still-frame"></div>
+  		<div class="still-frame" style="background-image:url('{{headerImage}}')"></div>
 		</div>
   </div>		
 
   <div class="main-container">  
-    <div class="container">
       
+    {{#if currentUser}}
+    <div class="container">
       <div class="row">
         <div class="two-thirds column" style="margin-top: 5%">
-          {{#if currentUser}}
-          <h1>{{> editableText collection="pages" field="headline" textarea=true placeholder="New post"}}</h1>
-          <h5>{{> editableText collection="pages" field="subhead" textarea=true placeholder="New post"}}</h5>
-          {{else}}
-          <h1>{{headline}}</h1>
-          <h5>{{subhead}}</h5>
-          {{/if}}
+          <h1 class="super-headline">{{> editableText collection="pages" field="headline" textarea=true placeholder="New post"}}</h1>
+          <h2 class="sub-headline">{{> editableText collection="pages" field="subhead" textarea=true placeholder="New post"}}</h2>
+          <h5 class="social">
+            <a href="http://twitter.com/share?url=http%3A%2F%2Fpostandcourier.com%2Fscott-timegap&amp;via=postandcourier&amp;text=2.7%20Seconds%3A%20How%208%20bullets%20pierced%20the%20nation%20%23WalterScott&amp;related=postandcourier" target="_blank" onclick="return windowpop(this.href, 545, 433);" onmousedown="__gaTracker('send', 'event', 'scott-timegap', 'Day 1 Tweet 1', 'shared');" style="margin-right: 2rem;">
+              <i class="fa fa-twitter"></i>
+            </a>
+            <a href="https://www.facebook.com/dialog/share?app_id=146078808769941&amp;display=popup&amp;href=http%3A%2F%2Fpostandcourier.com%2Fscott-timegap&amp;redirect_uri=http%3A%2F%2Fpostandcourier.com%2Fscott-timegap" target="_blank" onclick="return windowpop(this.href, 545, 433);" onmousedown="__gaTracker('send', 'event', 'scott-timegap', 'Day 1 FB 1', 'shared');">
+						  <i class="fa fa-facebook"></i>
+						</a>
+          </h5>
         </div>
       </div>
-      
+    </div>
+    
+    <div class="container" style="margin-top: 5%;">
+        
+        {{#each paragraphs}}
+          {{> editParagraph}}
+          {{> addImage}}
+        {{/each}}
+        
+    </div>
+        
+    {{else}}
+    <div class="container">
       <div class="row">
-        <div class="two-thirds column">
-          {{#if currentUser}}
-            {{#each paragraphs}}
-              <p>{{> editableText collection="pages" context=.. field=graph textarea=true inputClass="autosize-this" placeholder="New post"}}</p>
-            {{/each}}
-          {{else}}
-            {{#each paragraphs}}
-              {{> paragraph}}
-            {{/each}}
-          {{/if}}
+        <div class="two-thirds column" style="margin-top: 5%">
+          <h1 class="super-headline">{{headline}}</h1>
+          <h2 class="sub-headline">{{subhead}}</h2>
         </div>
       </div>
+    </div>
+    
+    <div class="container" style="margin-top: 5%;">
+      
+      {{#each paragraphs}}
+        {{> paragraph}}
+        {{> theImage}}
+      {{/each}}
       
     </div>
+        
+    {{/if}}
+
   </div>
 
   
 </template>
 
+<template name="editParagraph">
+  <div class="row">
+    <div class="one-half column">
+      <p>{{> editableText collection="pages" context=.. field=graph textarea=true wysiwyg=true inputClass="autosize-this" placeholder="New post"}}</p>
+    </div>
+  </div>
+</template>
+
 <template name="paragraph">
-    <p>{{text}}</p>
+  <div class="row">
+    <div class="one-half column">
+      <p>{{text}}</p>
+    </div>
+  </div>
+</template>
+
+<template name="theImage">
+  {{#if image}}
+  <div class="row" style="margin-bottom: 5%">
+    <div class="two-thirds column">
+      <img class="u-max-full-width" src="{{image}}">
+    </div>
+    <div class="one-third column">
+      <p class="image-caption">{{> editableText collection="pages" context=.. field=graphCaption textarea=true acceptEmpty=true substitute='Click here to add a caption.'}}</p>
+    </div>
+  </div>
+  {{/if}}
+</template>
+
+<template name="addImage">
+  {{#if image}}
+  <div class="row">
+    <div class="two-thirds column">
+      <img class="u-max-full-width" src="{{image}}">
+      <p><em><label><i class="fa fa-pencil-square-o"></i></label>
+      {{> editableText collection="pages" context=.. saveOnFocusout=false field=graphImg acceptEmpty=true placeholder="Insert URL to image and press enter" substitute='Add Image Here'}}</em></p>
+    </div>
+    <div class="one-third column">
+      <p class="image-caption">{{> editableText collection="pages" context=.. field=graphCaption textarea=true acceptEmpty=true substitute='Click here to add a caption.'}}</p>
+      <p><i class="fa fa-times"></i> Remove an image by erasing it's URL.</p>
+    </div>
+  </div>
+  {{else}}
+  <div class="row">
+    <div class="two-thirds column">
+      <p> {{> editableText collection="pages" context=.. field=graphImg acceptEmpty=true placeholder="Insert URL to image and press enter" substitute='<span class="button" href="#"><i class="fa fa-plus"> <i class="fa fa-picture-o"></span>'}}
+      </p>
+    </div>
+  </div>
+  {{/if}}
+    
 </template>

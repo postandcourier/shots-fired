@@ -8,6 +8,7 @@ anti:i18n@0.4.3
 aslagle:reactive-table@0.7.8
 autoupdate@1.2.1
 babrahams:editable-text@0.7.24
+babrahams:editable-text-wysiwyg@0.4.16
 base64@1.0.3
 binary-heap@1.0.3
 blaze@2.1.2
@@ -57,6 +58,7 @@ npm-bcrypt@0.7.8_2
 observe-sequence@1.0.6
 ordered-dict@1.0.3
 pauloborges:mapbox@2.1.4_3
+qazuor:animated-border-menus@1.0.2
 rahul:animate-everything@1.0.1
 random@1.0.3
 reactive-dict@1.1.0

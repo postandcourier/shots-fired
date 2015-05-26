@@ -17,6 +17,12 @@ if (Meteor.isClient) {
   	}
 	});
 	
+	Template.body.events({
+  	"click .toggle-menu": function() {
+    	Overlay.show('mainNav');
+  	}
+	});
+	
 	Template.adminView.helpers({
   	shootings: function() {
     	return Shootings.find({});
@@ -120,16 +126,6 @@ if (Meteor.isClient) {
     
 	};
 	
-	
-  // counter starts at 0
-  Session.setDefault('counter', 0);
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
 }
 
 if (Meteor.isServer) {
