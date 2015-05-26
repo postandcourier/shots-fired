@@ -62,6 +62,7 @@
           </div>
         </div>
       </div>
+      
       <div class="row">
         <div class="nine columns" style="height: 30rem;">
           {{> yearChart}}
@@ -71,13 +72,21 @@
         </div>
       </div>
       
+<!--
+      <div class="row">
+        <div class="twelve columns" style="height: 30rem;">
+          {{> ageChart}}
+        </div>
+      </div>
+-->
+      
     </div>
     
     <div class="container">
       <div class="row">
         <div class="one-half column" style="margin-top: 5%">
           <hr>
-          <p><strong>Reporting</strong>&emsp;Glenn Smith, Tony Bartelme, Doug Pardue, Andrew Knapp</p>
+          <p><strong>Reporting</strong>&emsp;Glenn Smith, Tony Bartelme, Doug Pardue, Andrew Knapp, and David Slade</p>
           <p><strong>Photography</strong>&emsp;Crime scene photos provided by SLED; Staff photos by Grace Beahm, Andrew Knapp, Wade Spees, Paul Zoeller</p>
           <p><strong>Video</strong>&emsp;Chris Hanclosky</p>
   				<p><strong>Web Development</strong>&emsp;J. Emory Parker</p>
@@ -110,6 +119,10 @@
 
 <template name="yearChart">
     <div id="yearChart"></div>
+</template>
+
+<template name="ageChart">
+    <div id="ageChart"></div>
 </template>
 
 <template name="map">

@@ -78,11 +78,13 @@ if (Meteor.isClient) {
     var data = _.where(fetchedResults, {civKilled: 1});
     //data = _.reject(data, {cdvFlag: "O"});
     data = _.countBy(data, "cdvFlag");
-    data = _.map(data, function(num, key) { return {name: key, value: Number(num)} });
+    console.log(data);
+    newData = _.map(data, function(num, key) { if(key=="TRUE"){key="Dom. Violence Related"} return {name: key, value: Number(num)} });
+    console.log(newData);
             
     d3plus.viz()
     .container("#dvChart")
-    .data(data)
+    .data(newData)
     .type("pie")
     .id("name")
     .size("value")
@@ -98,13 +100,14 @@ if (Meteor.isClient) {
     var data = _.where(fetchedResults, {civKilled: 1});
     //data = _.reject(data, {cdvFlag: "O"});
     data = _.countBy(data, "suicideflag");
-    data = _.map(data, function(num, key) { return {name: key, value: Number(num)} });
+    data = _.map(data, function(num, key) { if(key=="TRUE"){key="Suicide Related"} return {name: key, value: Number(num)} });
             
     d3plus.viz()
     .container("#suChart")
     .data(data)
     .type("pie")
     .id("name")
+    .focus({"tooltip":false, "value": "true"})
     .size("value")
     .labels(false)
     .draw()
@@ -117,7 +120,6 @@ if (Meteor.isClient) {
       
     var data = _.countBy(fetchedResults, "year");
     data = _.map(data, function(num, key) { return {year: key, value: Number(num), name: "Shootings" } });
-    console.log(data);
             
     d3plus.viz()
     .container("#yearChart")
@@ -131,5 +133,30 @@ if (Meteor.isClient) {
     
 	};
 	
+/*
+	Template.ageChart.rendered = function () {
+  	  	
+    var fetchedResults = Shootings.find( {}).fetch();
+      
+    var data = _.each(fetchedResults, function(n) { n.civAge = parseInt(n.civAge); } );
+    data = _.countBy(data, "civAge");
+    data = _.reject(data, {""})
+    console.log(data);
+    //data = _.countBy(data, "civAge")
+    //console.log(data);
+    data = _.map(data, function(num, key) { return {year: key, value: Number(num), name: "Incidents" } });
+    console.log(data);
+            
+    d3plus.viz()
+    .container("#ageChart")
+    .data(data)
+    .type("bar")
+    .id("name")
+    .y("value")
+    .x("year")
+    .draw()
+    
+	};
+*/
 	
 }
