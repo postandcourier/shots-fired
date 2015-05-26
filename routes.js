@@ -14,7 +14,9 @@ if (Meteor.isClient) {
     
   });
   
-  Router.route('/shots-fired/login');    
+  Router.route('/shots-fired/login', function () {
+    this.render('login');
+  );    
 
   Router.route('/shots-fired/page/:_id', function () {
 
