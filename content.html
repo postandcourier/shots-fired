@@ -12,6 +12,7 @@
     <div class="container">
       <div class="row">
         <div class="two-thirds column" style="margin-top: 5%">
+          {{> editableText collection="pages" field="headerImage" placeholder="New post"}}
           <h1 class="super-headline">{{> editableText collection="pages" field="headline" textarea=true placeholder="New post"}}</h1>
           <h2 class="sub-headline">{{> editableText collection="pages" field="subhead" textarea=true placeholder="New post"}}</h2>
           <h5 class="social">

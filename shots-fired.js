@@ -1,4 +1,4 @@
-Shootings = new Mongo.Collection("sled-shootings-clean");
+Shootings = new Mongo.Collection("shootingsFinal");
 Pages = new Mongo.Collection("pages");
 
 
