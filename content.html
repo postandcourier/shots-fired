@@ -63,6 +63,7 @@
           <hr>
           <p><strong>Reporting</strong>&emsp;Glenn Smith, Tony Bartelme, Doug Pardue, Andrew Knapp</p>
           <p><strong>Photography</strong>&emsp;Crime scene photos provided by SLED; Staff photos by Grace Beahm, Andrew Knapp, Wade Spees, Paul Zoeller</p>
+          <p><strong>Video</strong>&emsp;Chris Hanclosky</p>
   				<p><strong>Web Development</strong>&emsp;J. Emory Parker</p>
         </div>
 			</div>
@@ -82,7 +83,7 @@
 <template name="editParagraph">
   <div class="row">
     <div class="one-half column">
-      <p>{{> editableText collection="pages" context=.. field=graph wysiwyg=true textarea=true inputClass="autosize-this" substitute='<em>Click here to add a paragraph.</em>'}}</p>
+      <p>{{> editableText collection="pages" context=.. field=graph acceptEmpty=true wysiwyg=true textarea=true inputClass="autosize-this" substitute='<em>Click here to add a paragraph.</em>'}}</p>
     </div>
   </div>
 </template>
