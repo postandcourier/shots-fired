@@ -677,6 +677,27 @@ hr {
   margin-bottom: 3.5rem;
   border-width: 0;
   border-top: 1px solid #E1E1E1; }
+  
+  
+.leaflet-popup-content-wrapper {
+  background:#2c3e50 !important;
+  color:#fff;
+  font-size:12px !important;
+  line-height:24px !important;
+  font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
+.leaflet-popup-content-wrapper a {
+  color:rgba(255,255,255,0.5);
+  }
+.leaflet-popup-tip-container {
+  width:30px;
+  height:15px;
+  }
+.leaflet-popup-tip {
+  border-left:15px solid transparent;
+  border-right:15px solid transparent;
+  border-top:15px solid #2c3e50 !important;
+  }
 
 
 /* Clearing

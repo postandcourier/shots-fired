@@ -65,7 +65,7 @@
 <template name="editParagraph">
   <div class="row">
     <div class="one-half column">
-      <p>{{> editableText collection="pages" context=.. field=graph textarea=true wysiwyg=true inputClass="autosize-this" placeholder="New post"}}</p>
+      <p>{{> editableText collection="pages" context=.. field=graph textarea=true wysiwyg=true inputClass="autosize-this" substitute='<em>Click here to add a paragraph.</em>'}}</p>
     </div>
   </div>
 </template>
