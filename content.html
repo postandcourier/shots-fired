@@ -65,7 +65,7 @@
 <template name="editParagraph">
   <div class="row">
     <div class="one-half column">
-      <p>{{> editableText collection="pages" context=.. field=graph textarea=true wysiwyg=true inputClass="autosize-this" substitute='<em>Click here to add a paragraph.</em>'}}</p>
+      <p>{{> editableText collection="pages" context=.. field=graph textarea=true inputClass="autosize-this" substitute='<em>Click here to add a paragraph.</em>'}}</p>
     </div>
   </div>
 </template>
@@ -82,10 +82,14 @@
   {{#if image}}
   <div class="row" style="margin-bottom: 5%">
     <div class="two-thirds column">
+      {{#if video}}
+        <div class='embed-container'><iframe src='{{video}}' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+      {{else}}
       <img class="u-max-full-width" src="{{image}}">
+      {{/if}}
     </div>
     <div class="one-third column">
-      <p class="image-caption">{{> editableText collection="pages" context=.. field=graphCaption textarea=true acceptEmpty=true substitute='Click here to add a caption.'}}</p>
+      <p class="image-caption">{{imageCaption}}</p>
     </div>
   </div>
   {{/if}}
@@ -95,7 +99,11 @@
   {{#if image}}
   <div class="row">
     <div class="two-thirds column">
+      {{#if video}}
+        <div class='embed-container'><iframe src='{{video}}' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe></div>
+      {{else}}
       <img class="u-max-full-width" src="{{image}}">
+      {{/if}}
       <p><em><label><i class="fa fa-pencil-square-o"></i></label>
       {{> editableText collection="pages" context=.. saveOnFocusout=false field=graphImg acceptEmpty=true placeholder="Insert URL to image and press enter" substitute='Add Image Here'}}</em></p>
     </div>
