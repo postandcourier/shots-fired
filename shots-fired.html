@@ -9,53 +9,37 @@
   	<div class="container">
   	  <div class="logo">
   		  <a href="http://www.postandcourier.com" style="line-height:30px; height:30px; display:inline-block; float: left; margin-bottom: 10px; margin-right: 1rem;"><img class="u-max-full-width" src="http://www.postandcourier.com/scott-timegap/images/pclogo.png" style="margin-top:4px;"></a>
-        <div style="height:30px; padding-top: 5px;"><a href="/shots-fired/page/1" style="line-height:30px;"><span>One</span></a> <a href="/shots-fired/page/2" style="line-height:30px;"><span>Two</span></a> <a href="/shots-fired/page/3" style="line-height:30px;"><span>Three</span></a> <a href="/shots-fired/page/4" style="line-height:30px;"><span>Four</span></a> <a href="/shots-fired/data" style="line-height:30px;"><span>Data</span></a></div>
+        <div style="height:30px; padding-top: 5px;"><a href="/shots-fired/page/1" style="line-height:30px;"><span>One</span></a> <a href="/shots-fired/page/2" style="line-height:30px;"><span>Two</span></a> <a href="/shots-fired/page/3" style="line-height:30px;"><span>Three</span></a> <a href="/shots-fired/page/4" style="line-height:30px;"><span>Four</span></a> <a href="/shots-fired/data" style="line-height:30px;"><span>Data</span></a>{{#if currentUser "admin"}}&emsp; - &emsp;{{> loginButtons}}{{/if}}</div>
   	  </div>
     </div>
   </div>
 </body>
 
-<template name="rawDataView">
+<template name="login">
   
-  <h1>The Raw Data</h1>
-
-  <table>
-  {{#each shootings}}
-    {{> shootingListItem}}
-  {{/each}}
-  </table>
+  <div class="main-container">  
+    <div class="container">
+      
+      <div class="row">
+        <div class="two-thirds column">
+          <h1>Login</h1>
+          {{> loginButtons}}
+          <p>Login to edit article Text.</p>
+        </div>
+      </div>
+      
+    </div>
+  </div>
   
 </template>
 
 <template name="adminView">
-  
-  <div class="row">
-    <div class="two-thirds column">
-      <h1>Database Admin</h1>
-      {{> loginButtons}}
-    </div>
-  </div>
-  
-  {{#if currentUser "admin"}}
-    <div class="row">
-      <div class="twelve columns">
-        {{> volcanoTable settings=admin_settings}}
-      </div>
-    </div>
-  {{else}}
-    <div class="row">
-      <div class="two-thirds column">
-        <p>You need to be logged in to view this content.</p>
-      </div>
-    </div>
-  {{/if}}
  
 </template>
 
 
 <template name="adminTable">
 
-    {{> volcanoTable settings=admin_settings addRecord=true deleteRecord=true}}
 
 </template>
 

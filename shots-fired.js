@@ -11,13 +11,6 @@ if (Meteor.isClient) {
   Meteor.subscribe("shootings", function() {
   });
 
-    	
-	Template.rawDataView.helpers({
-  	shootings: function() {
-    	return Shootings.find({});
-  	}
-	});
-	
 	Template.dataView.helpers({
   	shootings: function() {
     	return Shootings.find({});
@@ -144,7 +137,5 @@ if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
   });
-  
-  VolcanoTable(Shootings, 'adminTable', {});
-  
+    
 }

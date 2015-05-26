@@ -11,16 +11,27 @@
       
       <div class="row">
         <div class="two-thirds column" style="margin-top: 5%">
+          {{#if currentUser}}
+          <h1>{{> editableText collection="pages" field="headline" textarea=true placeholder="New post"}}</h1>
+          <h5>{{> editableText collection="pages" field="subhead" textarea=true placeholder="New post"}}</h5>
+          {{else}}
           <h1>{{headline}}</h1>
           <h5>{{subhead}}</h5>
+          {{/if}}
         </div>
       </div>
       
       <div class="row">
         <div class="two-thirds column">
-          {{#each paragraphs}}
-            {{> paragraph}}
-          {{/each}}
+          {{#if currentUser}}
+            {{#each paragraphs}}
+              <p>{{> editableText collection="pages" context=.. field=graph textarea=true inputClass="autosize-this" placeholder="New post"}}</p>
+            {{/each}}
+          {{else}}
+            {{#each paragraphs}}
+              {{> paragraph}}
+            {{/each}}
+          {{/if}}
         </div>
       </div>
       

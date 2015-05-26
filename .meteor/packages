@@ -14,10 +14,9 @@ accounts-password
 accounts-base
 aslagle:reactive-table
 babrahams:editable-text
-wilbur:volcano-table
 simoes:d3plus
 pauloborges:mapbox
 semantic:ui-loader
-aldeed:autoform
 rahul:animate-everything
 sacha:spin
+fourseven:scss
