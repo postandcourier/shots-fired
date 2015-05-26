@@ -1,3 +1,7 @@
+Router.configure({
+    trackPageView: true
+});
+
 if (Meteor.isClient) {
 
   Router.route('/shots-fired/data', function () {

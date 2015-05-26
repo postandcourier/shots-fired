@@ -1,6 +1,10 @@
 Shootings = new Mongo.Collection("shootingsFinal");
 Pages = new Mongo.Collection("pages");
 
+Accounts.config({
+  forbidClientAccountCreation : true
+});
+
 
 if (Meteor.isClient) {
   

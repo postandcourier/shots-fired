@@ -1,17 +1,13 @@
 <template name="dataView">
 
   <style>
-  .info {
-    position:absolute;
-    top:50px;
-    right:10px;
-    }
-    .info div {
-      background:#fff;
-      padding:10px;
-      border-radius:3px;
-      }
-  </style>
+.search-ui {
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:1000;
+  }
+</style>
   
   
 
@@ -36,21 +32,63 @@
       
       <div class="row">
         <div class="two-thirds column">
-          <p>Some sort of intro paragraph or something. I'll write this later. Here's some random text about css: Type is all set with the rems, so font-sizes and spacial relationships can be responsively sized based on a single font-size property. Out of the box, Skeleton never changes the font-size, but it's there in case you need it for your project. All measurements are still base 10 though so, and with 5.0rem font-size just means 50px.</p>
+          <p>To learn more about officer-involved shootings in South Carolina and the ways they are reviewed, The Post and Courier used the Freedom of Information Act to obtain investigative files covering shootings since the start of 2009. Those records, including more than 30,000 pages of written reports, are the basis for this searchable database. This database relies primarily upon information from SLED’s investigative files. In some cases where files were not provided, court records, news reports and other sources were used.</p>
         </div>
       </div>
       
       <div class="row">
-        <div class="four columns">
+        <div class="four columns" style="height: 30rem;">
           {{> chart}}
         </div>
-        <div class="four columns">
-          {{> dvChart}}
+        <div class="three columns">
+          <p><strong>Weapons police said they faced</strong>&emsp;Guns are the most frequently listed weapons, followed by vehicles. Some unusual weapons include: a flashlight, a fork, and a piece of asphalt.</p>
         </div>
-
+        <div class="five columns">
+          <div class="row">
+            <div class="one-half column" style="height: 15rem;">
+              {{> dvChart}}
+            </div>
+            <div class="one-half column">
+              {{> suChart}}
+            </div>
+          </div>
+          <div class="row">
+            <div class="one-half column">
+              <p><strong>Domestic violence</strong> played a role in about 25% of fatalities.</p>
+            </div>
+            <div class="one-half column">
+              <p><strong>Suicide</strong> also accounted for a large percentage of fatalities.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="nine columns" style="height: 30rem;">
+          {{> yearChart}}
+        </div>
+        <div class="three columns">
+          <p><strong>Civilians, officers injured or killed</strong>&emsp; The sharp dip for 2015 is due to the fact that data for this year is incomplete.</p>
+        </div>
       </div>
       
     </div>
+    
+    <div class="container">
+      <div class="row">
+        <div class="one-half column" style="margin-top: 5%">
+          <hr>
+          <p><strong>Reporting</strong>&emsp;Glenn Smith, Tony Bartelme, Doug Pardue, Andrew Knapp</p>
+          <p><strong>Photography</strong>&emsp;Crime scene photos provided by SLED; Staff photos by Grace Beahm, Andrew Knapp, Wade Spees, Paul Zoeller</p>
+  				<p><strong>Web Development</strong>&emsp;J. Emory Parker</p>
+        </div>
+			</div>
+
+			<div class="row">
+				<div class="one-half column" style="margin-top: 20%">
+					<p>&copy; 2015, The Post and Courier, an Evening Post Industries company. All Rights Reserved.</p>
+				</div>
+		  </div>
+	  </div>
     
   </div>
 
@@ -63,6 +101,14 @@
 
 <template name="dvChart">
     <div id="dvChart"></div>
+</template>
+
+<template name="suChart">
+    <div id="suChart"></div>
+</template>
+
+<template name="yearChart">
+    <div id="yearChart"></div>
 </template>
 
 <template name="map">

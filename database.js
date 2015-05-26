@@ -86,8 +86,50 @@ if (Meteor.isClient) {
     .type("pie")
     .id("name")
     .size("value")
+    .labels(false)
     .draw()
     
 	};
+	
+	Template.suChart.rendered = function () {
+  	  	
+    var fetchedResults = Shootings.find( {}, {"suspectWeapon": 1, "opened": 1, "latitude":1, "longitude":1} ).fetch();
+      
+    var data = _.where(fetchedResults, {civKilled: 1});
+    //data = _.reject(data, {cdvFlag: "O"});
+    data = _.countBy(data, "suicideflag");
+    data = _.map(data, function(num, key) { return {name: key, value: Number(num)} });
+            
+    d3plus.viz()
+    .container("#suChart")
+    .data(data)
+    .type("pie")
+    .id("name")
+    .size("value")
+    .labels(false)
+    .draw()
+    
+	};
+	
+	Template.yearChart.rendered = function () {
+  	  	
+    var fetchedResults = Shootings.find( {}).fetch();
+      
+    var data = _.countBy(fetchedResults, "year");
+    data = _.map(data, function(num, key) { return {year: key, value: Number(num), name: "Shootings" } });
+    console.log(data);
+            
+    d3plus.viz()
+    .container("#yearChart")
+    .data(data)
+    .type("line")
+    .id("name")
+    .text("name")
+    .y("value")
+    .x("year")
+    .draw()
+    
+	};
+	
 	
 }

@@ -16,15 +16,16 @@ if (Meteor.isClient) {
 	
 	Template.theImage.helpers({
     video: function() {
-      var graph = 'paragraphs.' + this.index + '.image';
+      var graph = this.image + "";
+      console.log(graph);
       var matches = graph.match(/^.*(player.vimeo.com).*$/);
-      var hasVideo;
+      var video;
       if (matches) {
-        hasVideo = true;
+        video = graph;
       } else {
-        hasVideo = false;
+        video = false;
       };
-      return hasVideo;
+      return video;
     }
 	});
 	

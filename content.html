@@ -16,10 +16,10 @@
           <h1 class="super-headline">{{> editableText collection="pages" field="headline" textarea=true placeholder="New post"}}</h1>
           <h2 class="sub-headline">{{> editableText collection="pages" field="subhead" textarea=true placeholder="New post"}}</h2>
           <h5 class="social">
-            <a href="http://twitter.com/share?url=http%3A%2F%2Fpostandcourier.com%2Fscott-timegap&amp;via=postandcourier&amp;text=2.7%20Seconds%3A%20How%208%20bullets%20pierced%20the%20nation%20%23WalterScott&amp;related=postandcourier" target="_blank" onclick="return windowpop(this.href, 545, 433);" onmousedown="__gaTracker('send', 'event', 'scott-timegap', 'Day 1 Tweet 1', 'shared');" style="margin-right: 2rem;">
+            <a href="http://twitter.com/share?url=http%3A%2F%2Fdata.postandcourier.com%2Fshots-fired%2Fpage%2F1&amp;via=postandcourier&amp;text=When%20police%20pull%20the%20trigger%20in%20South%20Carolina%2C%20flawed%20investigations%20and%20double-standards%20followrelated=postandcourier" target="_blank" onclick="return windowpop(this.href, 545, 433);" onmousedown="__gaTracker('send', 'event', 'shots-fired', 'Day 1 Tweet 1', 'shared');" style="margin-right: 2rem;">
               <i class="fa fa-twitter"></i>
             </a>
-            <a href="https://www.facebook.com/dialog/share?app_id=146078808769941&amp;display=popup&amp;href=http%3A%2F%2Fpostandcourier.com%2Fscott-timegap&amp;redirect_uri=http%3A%2F%2Fpostandcourier.com%2Fscott-timegap" target="_blank" onclick="return windowpop(this.href, 545, 433);" onmousedown="__gaTracker('send', 'event', 'scott-timegap', 'Day 1 FB 1', 'shared');">
+            <a href="https://www.facebook.com/dialog/share?app_id=146078808769941&amp;display=popup&amp;href=http%3A%2F%2Fdata.postandcourier.com%2Fshots-fired%2Fpage%2F1&amp;redirect_uri=http%3A%2F%2Fdata.postandcourier.com%2Fshots-fired%2Fpage%2F1" target="_blank" onclick="return windowpop(this.href, 545, 433);" onmousedown="__gaTracker('send', 'event', 'shots-fired', 'Day 1 FB 1', 'shared');">
 						  <i class="fa fa-facebook"></i>
 						</a>
           </h5>
@@ -56,6 +56,23 @@
     </div>
         
     {{/if}}
+    
+    <div class="container">
+      <div class="row">
+        <div class="one-half column" style="margin-top: 5%">
+          <hr>
+          <p><strong>Reporting</strong>&emsp;Glenn Smith, Tony Bartelme, Doug Pardue, Andrew Knapp</p>
+          <p><strong>Photography</strong>&emsp;Crime scene photos provided by SLED; Staff photos by Grace Beahm, Andrew Knapp, Wade Spees, Paul Zoeller</p>
+  				<p><strong>Web Development</strong>&emsp;J. Emory Parker</p>
+        </div>
+			</div>
+
+			<div class="row">
+				<div class="one-half column" style="margin-top: 20%">
+					<p>&copy; 2015, The Post and Courier, an Evening Post Industries company. All Rights Reserved.</p>
+				</div>
+		  </div>
+	  </div>
 
   </div>
 
@@ -65,7 +82,7 @@
 <template name="editParagraph">
   <div class="row">
     <div class="one-half column">
-      <p>{{> editableText collection="pages" context=.. field=graph textarea=true inputClass="autosize-this" substitute='<em>Click here to add a paragraph.</em>'}}</p>
+      <p>{{> editableText collection="pages" context=.. field=graph wysiwyg=true textarea=true inputClass="autosize-this" substitute='<em>Click here to add a paragraph.</em>'}}</p>
     </div>
   </div>
 </template>
@@ -109,7 +126,7 @@
     </div>
     <div class="one-third column">
       <p class="image-caption">{{> editableText collection="pages" context=.. field=graphCaption textarea=true acceptEmpty=true substitute='Click here to add a caption.'}}</p>
-      <p><i class="fa fa-times"></i> Remove an image by erasing it's URL.</p>
+      <p><i class="fa fa-times"></i> Remove an image by erasing its URL.</p>
     </div>
   </div>
   {{else}}
