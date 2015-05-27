@@ -1,7 +1,3 @@
-Router.configure({
-    trackPageView: true
-});
-
 if (Meteor.isClient) {
 
   Router.route('/shots-fired/data', function () {
@@ -38,10 +34,6 @@ if (Meteor.isClient) {
       this.render('loader');
     }
     
-  },{
-    name: 'pages',
-    path: '/shots-fired/page/:_id',
-    trackPageView: true
   });
 
 }
