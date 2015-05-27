@@ -38,6 +38,10 @@ if (Meteor.isClient) {
       this.render('loader');
     }
     
+  },{
+    name: 'pages',
+    path: '/shots-fired/page/:_id',
+    trackPageView: true
   });
 
 }
