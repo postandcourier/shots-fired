@@ -7,31 +7,66 @@ if (Meteor.isClient) {
   
   
   Template.map.rendered = function () {
-    var fetchedResults = Shootings.find( {}, {"suspectWeapon": 1, "opened": 1, "latitude":1, "longitude":1} ).fetch();
     
-    fetchedResults = _.filter(fetchedResults, function(d) { return d.latitude > 0 });
+    var self = this;
     
-    var geoData = _.map(fetchedResults, function(d) {
-      return {
-          "type": "Feature",
-          "geometry": {
-            "type": "Point",
-            "coordinates": [d.longitude, d.latitude]
-          },
-          "properties": {
-            "title": d.civilianName,
-            "description": "<strong>Age</strong>&emsp;" + d.civAge + "<br><strong>Case opened</strong>&emsp;" + d.caseOpened + "<br><strong>Case closed</strong>&emsp;" + d.closed + "<br><strong>Summary</strong>&emsp;" + d.summary,
-            "marker-size": "small",
-            "marker-color": "#2c3e50"
+    self.mapDeps = Deps.autorun(function() {
+      
+      var fetchedResults = Shootings.find( {}, {"suspectWeapon": 1, "opened": 1, "latitude":1, "longitude":1} ).fetch();
+      
+      fetchedResults = _.filter(fetchedResults, function(d) { return d.latitude > 0 });
+      
+      var geoData = _.map(fetchedResults, function(d) {
+        if(d.pdfUrl) {
+          return {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [d.longitude, d.latitude]
+            },
+            "properties": {
+              "title": d.civilianName,
+              "description": '<strong>Age</strong>&emsp;' + d.civAge + '<br><strong>Case opened</strong>&emsp;' + d.caseOpened + '<br><strong>Case closed</strong>&emsp;' + d.closed + '<br><strong>Summary</strong>&emsp;' + d.summary + '<br><strong>Case Files</strong>&emsp;' + '<a href="'+d.pdfUrl+'" style="color:#fff; text-decoration:underline;" _target="blank"><i class="fa fa-file-pdf-o"></i> PDF</a>',
+              "marker-size": "small",
+              "marker-color": "#2c3e50"
+            }
+          }
+        } else if (d.videoUrl) {
+          return {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [d.longitude, d.latitude]
+            },
+            "properties": {
+              "title": d.civilianName,
+              "description": '<strong>Age</strong>&emsp;' + d.civAge + '<br><strong>Case opened</strong>&emsp;' + d.caseOpened + '<br><strong>Case closed</strong>&emsp;' + d.closed + '<br><strong>Summary</strong>&emsp;' + d.summary + '<br><strong>Case Video</strong>&emsp;' + '<a href="'+d.videoUrl+'" style="color:#fff; text-decoration:underline;" _target="blank"><i class="fa fa-film"></i> Watch</a>',
+              "marker-size": "small",
+              "marker-color": "#2c3e50"
+            }
+          }
+        } else {
+          return {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [d.longitude, d.latitude]
+            },
+            "properties": {
+              "title": d.civilianName,
+              "description": "<strong>Age</strong>&emsp;" + d.civAge + "<br><strong>Case opened</strong>&emsp;" + d.caseOpened + "<br><strong>Case closed</strong>&emsp;" + d.closed + "<br><strong>Summary</strong>&emsp;" + d.summary + "<br><strong>Case Files</strong>&emsp; None available<br><strong>Case Video</strong>&emsp; None available",
+              "marker-size": "small",
+              "marker-color": "#2c3e50"
+            }
           }
         }
-    });
+      });
+  
     
-    var heatData = _.map(fetchedResults, function(d) {
-      return [d.latitude, d.longitude];
-    })
-        
-    this.autorun(function () {
+      var heatData = _.map(fetchedResults, function(d) {
+        return [d.latitude, d.longitude];
+      });
+      
       if (Mapbox.loaded()) {
         L.mapbox.accessToken = 'pk.eyJ1IjoicG9zdGFuZGNvdXJpZXIiLCJhIjoiLTJtdV9XQSJ9.jbQWsbAO9LktxtEBDHcl3Q';
         var info = document.getElementById('info');
@@ -50,7 +85,16 @@ if (Meteor.isClient) {
         map.fitBounds(heat.getBounds());
         
       }
+
+      
     });
+    
+  };
+  
+  Template.map.destroyed = function () {
+
+    this.mapDeps.stop();
+
   };
 	
 	
