@@ -27,8 +27,11 @@
   <div class="nav-container">
   	<div class="container">
   	  <div class="logo">
-  		  <a href="http://www.postandcourier.com" style="line-height:30px; height:30px; display:inline-block; float: left; margin-bottom: 10px; margin-right: 1rem;"><img class="u-max-full-width" src="http://www.postandcourier.com/scott-timegap/images/pclogo.png" style="margin-top:4px;"></a>
-        <div style="height:30px; padding-top: 5px;"><a href="/shots-fired/page/1" style="line-height:30px;"><span>One</span></a> <a href="/shots-fired/page/2" style="line-height:30px;"><span>Two</span></a> <a href="/shots-fired/page/3" style="line-height:30px;"><span>Three</span></a> <a href="/shots-fired/page/4" style="line-height:30px;"><span>Four</span></a> <a href="/shots-fired/page/5" style="line-height:30px;"><span>Five</span></a> <a href="/shots-fired/data" style="line-height:30px;"><span>Data</span></a>{{#if currentUser "admin"}}&emsp; - &emsp;{{> loginButtons}}{{/if}}</div>
+  		  <a class="main-logo" href="http://www.postandcourier.com" style="line-height:30px; height:30px; float: left; margin-bottom: 10px; margin-right: 1rem;"><img class="u-max-full-width" src="http://www.postandcourier.com/scott-timegap/images/pclogo.png" style="margin-top:4px;"></a>
+  		  
+  		  <a class="mobile-logo" href="http://www.postandcourier.com" style="line-height:30px; height:30px; float: left; margin-bottom: 10px; margin-right: 1rem;"><img class="u-max-full-width" src="http://www.postandcourier.com/carbon/carbon-generic.png" style="margin-top:4px;"></a>
+  		  
+        <div class="links-container" style="height:30px; padding-top: 5px;"><a href="/shots-fired/page/1" style="line-height:30px;"><span>One</span></a> <a href="/shots-fired/page/2" style="line-height:30px;"><span>Two</span></a> <a href="/shots-fired/page/3" style="line-height:30px;"><span>Three</span></a> <a href="/shots-fired/page/4" style="line-height:30px;"><span>Four</span></a> <a href="/shots-fired/page/5" style="line-height:30px;"><span>Five</span></a> <a href="/shots-fired/data" style="line-height:30px;"><span>Data</span></a>{{#if currentUser "admin"}}&emsp; - &emsp;{{> loginButtons}}{{/if}}</div>
   	  </div>
     </div>
   </div>
@@ -48,8 +51,16 @@
 <template name="landingPage">
   <style>.embed-container { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; max-width: 100%; } .embed-container iframe, .embed-container object, .embed-container embed { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }</style><div class='embed-container'><iframe src='https://player.vimeo.com/video/128537170' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     
-    <div style="position: absolute; bottom: 50px; color: #fff; left:0; right: 0; margin: auto; text-align: center;"><a class="button" style="color:#fff;" href="/shots-fired/page/1"><p class="u-text-center">Read the story</p></a>&emsp;<a class="button" style="color:#fff;" href="/shots-fired/data"><p class="u-text-center">Explore the data</p></a></div>
+    <div class="landing-page"><a class="button" href="/shots-fired/page/1"><p class="u-text-center">Read the story</p></a>&emsp;<a class="button" href="/shots-fired/data"><p class="u-text-center">Explore the data</p></a></div>
     
+  </div>
+  
+  <div class="container mobile-landing" style="margin-top:10%">
+    <div>
+      <a href="/shots-fired/page/1"><h1>Read the story...</h1></a>
+      <hr>
+      <a href="/shots-fired/data"><h1>Explore the data...</h1></a>
+    </div>
   </div>
   
 </template>

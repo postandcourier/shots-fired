@@ -1,6 +1,33 @@
 Shootings = new Mongo.Collection("shootingsFinal");
 Pages = new Mongo.Collection("pages");
 
+TabularTables = {};
+
+Meteor.isClient && Template.registerHelper('TabularTables', TabularTables);
+
+TabularTables.shootings = new Tabular.Table ({
+  name: "IncidentList",
+  collection: Shootings,
+  columns: [
+    {data:"year", title:"Year", width:"5%"},
+    {data:"civilianName", title: "Name", width:"20%"},
+    {data:"civRace", title: "Race", visible:false},
+    {data:"primaryOfcInvolved", title: "Officer", width:"20%"},
+    {data:"ofcRace", title: "Officer Race", visible:false},
+    {data:"county", title: "County", width:"10%"},
+    {data:"agency", title: "Department", width:"10%"},
+    {data:"summary", title:"Case Summary", width:"50%", visible: false},
+    {data:"reasonPoliceOpenedFire", title:"Officer's Reason for Firing", width:"30%", visible: false},
+    {data:"pdfUrl", title: "Files", width:"10%", render: function(val){
+      if(val) {return '<a href="'+val+'" _target="blank"><i class="fa fa-file-pdf-o"></i></a>'}
+    }},
+    {data:"videoUrl", title: "Video", width:"10%", render: function(val){
+      if(val) {return '<a href="'+val+'" _target="blank"><i class="fa fa-film"></i></a>'}
+    }}
+  ],
+  dom: 'C<"clear">lfrtip'
+});
+
 Accounts.config({
   forbidClientAccountCreation : true
 });
