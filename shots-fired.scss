@@ -683,11 +683,29 @@ hr {
   background:#2c3e50 !important;
   color:#fff;
   font-size:12px !important;
-  line-height:24px !important;
+  line-height:1.6 !important;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  
+  a {
+    color: lighten(#2c3e50, 45%) !important;
+    border-bottom: 1px solid rgba(255,255,255,0);
   }
-.leaflet-popup-content-wrapper a {
-  color:rgba(255,255,255,0.5);
+  
+  a:hover {
+    color: lighten(#2c3e50, 55%) !important;
+    border-bottom: 1px solid lighten(#2c3e50, 55%);
+  }
+  
+  .marker-title{
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    font-size: 1.1rem !important;
+    line-height:1.6 !important;
+  }
+  
   }
 .leaflet-popup-tip-container {
   width:30px;

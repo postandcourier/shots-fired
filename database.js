@@ -17,7 +17,7 @@ if (Meteor.isClient) {
       fetchedResults = _.filter(fetchedResults, function(d) { return d.latitude > 0 });
       
       var geoData = _.map(fetchedResults, function(d) {
-        if(d.pdfUrl) {
+        if(d.pdfUrl && d.videoUrl) {
           return {
             "type": "Feature",
             "geometry": {
@@ -26,7 +26,7 @@ if (Meteor.isClient) {
             },
             "properties": {
               "title": d.civilianName,
-              "description": '<strong>Age</strong>&emsp;' + d.civAge + '<br><strong>Case opened</strong>&emsp;' + d.caseOpened + '<br><strong>Case closed</strong>&emsp;' + d.closed + '<br><strong>Summary</strong>&emsp;' + d.summary + '<br><strong>Case Files</strong>&emsp;' + '<a href="'+d.pdfUrl+'" style="color:#fff; text-decoration:underline;" _target="blank"><i class="fa fa-file-pdf-o"></i> PDF</a>',
+              "description": '<p><strong>Age</strong>&emsp;' + d.civAge + '</p><p><strong>Case opened</strong>&emsp;' + d.caseOpened + '</p><p><strong>Case closed</strong>&emsp;' + d.closed + '</p><p><strong>Summary</strong>&emsp;' + d.summary + '</p><p><strong>Case Files</strong>&emsp;' + '<a href="'+d.pdfUrl+'" _target="blank"><i class="fa fa-file-pdf-o"></i> PDF</a>' + '</p><p><strong>Case Video</strong>&emsp;<a href="'+d.videoUrl+'" _target="blank"><i class="fa fa-film"></i> Watch</a></p>',
               "marker-size": "small",
               "marker-color": "#2c3e50"
             }
@@ -40,7 +40,21 @@ if (Meteor.isClient) {
             },
             "properties": {
               "title": d.civilianName,
-              "description": '<strong>Age</strong>&emsp;' + d.civAge + '<br><strong>Case opened</strong>&emsp;' + d.caseOpened + '<br><strong>Case closed</strong>&emsp;' + d.closed + '<br><strong>Summary</strong>&emsp;' + d.summary + '<br><strong>Case Video</strong>&emsp;' + '<a href="'+d.videoUrl+'" style="color:#fff; text-decoration:underline;" _target="blank"><i class="fa fa-film"></i> Watch</a>',
+              "description": '<p><strong>Age</strong>&emsp;' + d.civAge + '</p><p><strong>Case opened</strong>&emsp;' + d.caseOpened + '</p><p><strong>Case closed</strong>&emsp;' + d.closed + '</p><p><strong>Summary</strong>&emsp;' + d.summary + '</p><p><strong>Case Video</strong>&emsp;<a href="'+d.videoUrl+'" _target="blank"><i class="fa fa-film"></i> Watch</a></p>',
+              "marker-size": "small",
+              "marker-color": "#2c3e50"
+            }
+          }
+        } else if (d.pdfUrl) {
+          return {
+            "type": "Feature",
+            "geometry": {
+              "type": "Point",
+              "coordinates": [d.longitude, d.latitude]
+            },
+            "properties": {
+              "title": d.civilianName,
+              "description": '<p><strong>Age</strong>&emsp;' + d.civAge + '</p><p><strong>Case opened</strong>&emsp;' + d.caseOpened + '</p><p><strong>Case closed</strong>&emsp;' + d.closed + '</p><p><strong>Summary</strong>&emsp;' + d.summary + '</p><p><strong>Case Files</strong>&emsp;' + '<a href="'+d.pdfUrl+'" _target="blank"><i class="fa fa-file-pdf-o"></i> PDF</a></p>',
               "marker-size": "small",
               "marker-color": "#2c3e50"
             }
@@ -54,7 +68,7 @@ if (Meteor.isClient) {
             },
             "properties": {
               "title": d.civilianName,
-              "description": "<strong>Age</strong>&emsp;" + d.civAge + "<br><strong>Case opened</strong>&emsp;" + d.caseOpened + "<br><strong>Case closed</strong>&emsp;" + d.closed + "<br><strong>Summary</strong>&emsp;" + d.summary + "<br><strong>Case Files</strong>&emsp; None available<br><strong>Case Video</strong>&emsp; None available",
+              "description": "<p><strong>Age</strong>&emsp;" + d.civAge + "</p><p><strong>Case opened</strong>&emsp;" + d.caseOpened + "</p><p><strong>Case closed</strong>&emsp;" + d.closed + "</p><p><strong>Summary</strong>&emsp;" + d.summary + "</p>",
               "marker-size": "small",
               "marker-color": "#2c3e50"
             }
