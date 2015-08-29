@@ -74,6 +74,7 @@ sha@1.0.3
 simoes:d3plus@1.7.3
 spacebars@1.0.6
 spacebars-compiler@1.0.6
+spiderable@1.0.7
 srp@1.0.3
 templating@1.1.1
 tracker@1.0.7
