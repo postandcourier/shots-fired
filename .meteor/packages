@@ -37,4 +37,4 @@ check
 standard-minifier-css
 standard-minifier-js
 shell-server
-fourseven:scss
+fourseven:scss@3.8.0_1
